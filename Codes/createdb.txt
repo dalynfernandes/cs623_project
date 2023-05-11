@@ -1,0 +1,2 @@
+//Create a database or create a database
+use GIS;

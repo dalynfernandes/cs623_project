@@ -1,0 +1,71 @@
+//Create a database or create a database
+use GIS;
+
+
+//Create a collection named('geodata')
+db.createCollection('geodata');
+
+
+
+
+//Create documents in the collections
+//I have used .insertOne instead of .insertMany
+db.geodata.insertOne({
+    'name':'Dunkin',
+    'location':{
+        'type':'Point',
+        'coordinates':[73.7033602,40.752222]
+    }
+
+});
+
+db.geodata.insertOne({
+    'name':'Venom',
+    'location':{
+        'type':'Point',
+        'coordinates':[73.7217817,40.7253564]
+    }
+
+});
+db.geodata.insertOne({
+    'name':'Pace University',
+    'location':{
+        'type':'Point',
+        'coordinates':[74.0051758,40.7112562]
+    }
+
+});
+db.geodata.insertOne({
+    'name':'Journal square',
+    'location':{
+        'type':'Point',
+        'coordinates':[74.0631544,40.7345715]
+    }
+
+});
+db.geodata.insertOne({
+    'name':'Time square',
+    'location':{
+        'type':'Point',
+        'coordinates':[73.9881175,40.7579747]
+    }
+
+});
+db.geodata.insertOne({
+    'name':'Long Island University',
+    'location':{
+        'type':'Point',
+        'coordinates':[73.9992087,40.8700085]
+    }
+
+});
+
+//To show all the documents in a collection named('geodata')
+db.geodata.find();
+
+
+//To create a Index 
+db.geodata.createIndex({location:'2dsphere'});
+
+//To retreive nearby location locations with specific features
+db.geodata.find({location: {$near: {$geometry: {type:'Point', coordinates: [73.7033602,40.752222]},$maxDistance: 100000}}})

@@ -1,0 +1,61 @@
+//Sorting the queries
+
+//Ascending sort on name
+db.geodata.find({
+  location: {
+    $geoWithin: {
+      $geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [73.7033602,40.752222], 
+            [74.0051758,40.7112562],
+            [74.0631544,40.7345715],
+            [73.5908681,40.8155221],
+            [73.7033602,40.752222]  
+          ]
+        ]
+      }
+    }
+  }
+}).sort({ name: 1 }) 
+
+//Descending sort on name
+db.geodata.find({
+  location: {
+    $geoWithin: {
+      $geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [73.7033602,40.752222], 
+            [74.0051758,40.7112562],
+            [74.0631544,40.7345715],
+            [73.5908681,40.8155221],
+            [73.7033602,40.752222]  
+          ]
+        ]
+      }
+    }
+  }
+}).sort({ name: -1 }) 
+
+//Limit the executions and show the desired documents
+db.geodata.find({
+  location: {
+    $geoWithin: {
+      $geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [73.7033602,40.752222], 
+            [74.0051758,40.7112562],
+            [74.0631544,40.7345715],
+            [73.5908681,40.8155221],
+            [73.7033602,40.752222]  
+          ]
+        ]
+      }
+    }
+  }
+}).limit(3)//only 3 documents are shown in the result

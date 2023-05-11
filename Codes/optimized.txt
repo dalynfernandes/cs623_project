@@ -1,0 +1,3 @@
+//For geospatial queries, create a geospatial index on the location field. 
+//This index will significantly improve the performance of location-based operations. 
+db.geodata.createIndex({location:'2dsphere'});
