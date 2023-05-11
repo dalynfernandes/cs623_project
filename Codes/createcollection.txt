@@ -1,0 +1,2 @@
+//Create a collection named('geodata')
+db.createCollection('geodata');
